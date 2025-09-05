@@ -18,7 +18,7 @@ const App = () => {
       }}
     >
       {/* Animated heading */}
-      <div style={{ width: '50%',height:'20%', textAlign: 'center', marginBottom: '40px' }}>
+      <div style={{ width: '50%',height:'20%', textAlign: 'center', marginBottom: '40px' , marginTop:'20px'  }}>
         <TextPressure
           text="Todo List"
           flex={true}
