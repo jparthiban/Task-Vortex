@@ -1,0 +1,5 @@
+# Set all JS, JSON, CSS files to use LF in repo
+*.js text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
