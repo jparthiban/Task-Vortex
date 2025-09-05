@@ -96,7 +96,7 @@ function TodoApp() {
                     value={newTask}
                     onChange={handleInput}
                     onKeyDown={(e) => e.key === "Enter" && addTask()}
-                    
+
                     placeholder="Enter task"
                     className={styles.input}
                 />
@@ -150,7 +150,7 @@ function TodoApp() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            style={{ color: "#f90303ff", marginLeft:"10px" }}
+                            style={{ color: "#f90303ff", marginLeft: "10px" }}
                         >
                             No tasks to show!
                         </motion.p>
@@ -164,7 +164,7 @@ function TodoApp() {
                                 opacity: 1,
                                 y: 0,
                                 backgroundColor: task.isCompl ? "#bcebceff" : "#f9f9f9",
-                                
+
                             }}
                             exit={{ opacity: 0, y: 20 }}
                             transition={{ duration: 0.3 }}
@@ -194,66 +194,74 @@ function TodoApp() {
                             </div>
 
                             {/* Buttons */}
-                            <div style={{ display: "flex", gap: "8px" }}>
+                            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                                {/* ✅ Complete Button */}
                                 <Button
                                     variant="contained"
                                     color={task.isCompl ? "warning" : "success"}
-                                    startIcon={<CheckIcon style={{backgroundColor:"#09f309ff"}} />}
+                                    startIcon={<CheckIcon />}
                                     sx={{
-                                        fontSize: '14px',      // text size
-                                        padding: '4px 12px',   // vertical & horizontal padding
-                                        Width: '50px'  ,   // optional width control
-                                        font:'bold',
-                                        
-                                        
+                                        fontSize: { xs: "10px", sm: "12px" }, // smaller on mobile
+                                        padding: { xs: "4px 6px", sm: "4px 12px" },
+                                        minWidth: { xs: "70px", sm: "100px" }, // compact size
+                                        fontWeight: "bold",
                                     }}
                                     onClick={() => toggCompl(task.id)}
                                 >
-                                    {task.isCompl ? "Undo" : "Complete"}
+                                    {task.isCompl ? "Undo" : "Done"}
                                 </Button>
 
+                                {/* ✅ Delete Button */}
                                 <Button
                                     variant="outlined"
                                     color="error"
                                     startIcon={<DeleteIcon />}
                                     sx={{
-                                        fontSize: '12px',      // text size
-                                        padding: '4px 12px',   // vertical & horizontal padding
-                                        Width: '50px'  ,   // optional width control
-                                        font:'bold'
-                                        
+                                        fontSize: { xs: "10px", sm: "12px" },
+                                        padding: { xs: "4px 6px", sm: "4px 12px" },
+                                        minWidth: { xs: "70px", sm: "100px" },
+                                        fontWeight: "bold",
                                     }}
                                     onClick={() => deleteTask(task.id)}
                                 >
                                     Delete
                                 </Button>
 
-
+                                {/* ✅ Edit / Save Button */}
                                 {task.isEdit ? (
-                                    <button
+                                    <Button
+                                        variant="contained"
+                                        color="success"
+                                        startIcon={<SaveIcon />}
+                                        sx={{
+                                            fontSize: { xs: "10px", sm: "12px" },
+                                            padding: { xs: "4px 6px", sm: "4px 12px" },
+                                            minWidth: { xs: "70px", sm: "100px" },
+                                            fontWeight: "bold",
+                                        }}
                                         onClick={() => saveEdit(task.id)}
-                                        className={`${styles.taskButton} ${styles.saveButton}`}
                                     >
                                         Save
-                                    </button>
+                                    </Button>
                                 ) : (
                                     <Button
                                         variant="outlined"
                                         color="secondary"
                                         startIcon={<EditIcon />}
                                         sx={{
-                                        fontSize: '12px',      // text size
-                                        padding: '2px 8px',   // vertical & horizontal padding
-                                        Width: '50px'  ,   // optional width control
-                                        font:'bold'
-                                        
-                                    }}
+                                            fontSize: { xs: "10px", sm: "12px" },
+                                            padding: { xs: "4px 6px", sm: "4px 12px" },
+                                            minWidth: { xs: "70px", sm: "100px" },
+                                            fontWeight: "bold",
+                                        }}
                                         onClick={() => toggEdit(task.id)}
                                     >
                                         Edit
                                     </Button>
                                 )}
                             </div>
+
+
                         </motion.li>
                     ))}
                 </AnimatePresence>

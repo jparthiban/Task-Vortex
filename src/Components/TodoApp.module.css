@@ -245,7 +245,11 @@
   .filterSection { flex-direction: row; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 380px) {
+
+   .hideOnMobile {
+    display: none;
+  }
   .inputSection, .filterSection {
     flex-direction: row;
     align-items: stretch;
@@ -265,13 +269,9 @@
      
   }
 
- 
   .taskButton {
     margin-top: 6px;
     width: 100%;
-    
-    
-
   }
   .clearButton {
     width: 100%;
@@ -295,4 +295,20 @@
     font-size: 14px;
     padding: 10px;
   }
+ .taskButtons {
+    display: flex;
+    flex-direction: row;     /* keep in a row */
+    flex-wrap: wrap;         /* allow wrapping if needed */
+    justify-content: center; /* center buttons */
+    gap: 6px;
+    width: 100%;
+  }
+
+  .taskButtons button {
+    flex: 1 1 30%;   /* each button takes ~30% width */
+    min-width: 90px; /* ensures text fits */
+    padding: 8px;    /* smaller padding for compactness */
+    font-size: 12px; /* reduce font size on mobile */
+  }
+
 }
